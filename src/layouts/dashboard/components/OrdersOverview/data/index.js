@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 // @mui material components
 import Tooltip from "@mui/material/Tooltip";
+import Rating from "@mui/material/Rating";
+import * as React from "react";
 
 // Soft UI Dashboard React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
-import MDBadge from "components/MDBadge";
+// import MDBadge from "components/MDBadge";
 
 // Images
 import team1 from "assets/images/team-1.jpg";
@@ -15,6 +17,7 @@ import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
+  const [value] = React.useState(2);
   const avatars = (members) =>
     members.map(([image, name]) => (
       <Tooltip key={name} title={name} placeholder="bottom">
@@ -63,11 +66,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "group", accessor: "group", width: "25%", align: "left" },
+      { Header: "group", accessor: "group", width: "10%", align: "left" },
       { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "mentor", accessor: "mentor", align: "center" },
-      { Header: "date/time", accessor: "date_time", align: "center" },
-      { Header: "status", accessor: "status", align: "center" },
+      { Header: "mentor", accessor: "mentor", width: "15%", align: "center" },
+      { Header: "feedback", accessor: "feedback", width: "15%", align: "center" },
+      { Header: "rating", accessor: "rating", align: "center" },
     ],
 
     rows: [
@@ -83,20 +86,84 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
-        date_time: (
+        mentor: <Mentor image={team1} name="abc" email="john@creative-tim.com" />,
+        feedback: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            11/02/22__7h:45
+            Very good
           </MDTypography>
         ),
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Done" color="success" variant="gradient" size="sm" />
+        rating: <Rating name="read-only" value={5} readOnly />,
+      },
+      {
+        group: <Group image={team4} name="abc" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([
+              [team1, "Ryan Tompson"],
+              [team2, "Romina Hadid"],
+              [team3, "Alexander Smith"],
+            ])}
           </MDBox>
         ),
+        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
+        feedback: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Nice
+          </MDTypography>
+        ),
+        rating: <Rating name="read-only" value={4} readOnly />,
       },
       {
         group: <Group image={team2} name="abc" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([
+              [team1, "Ryan Tompson"],
+              [team3, "Alexander Smith"],
+              [team4, "Jessica Doe"],
+            ])}
+          </MDBox>
+        ),
+        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
+        feedback: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Không gian thoải mái
+          </MDTypography>
+        ),
+        rating: <Rating name="read-only" value={4} readOnly />,
+      },
+      {
+        group: <Group image={team1} name="abc" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([[team1, "Ryan Tompson"]])}
+          </MDBox>
+        ),
+        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
+        feedback: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Khá ổn
+          </MDTypography>
+        ),
+        rating: <Rating name="read-only" value={value} readOnly />,
+      },
+      {
+        group: <Group image={team3} name="abc" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([[team4, "Jessica Doe"]])}
+          </MDBox>
+        ),
+        mentor: <Mentor image={team4} name="abc" email="john@creative-tim.com" />,
+        feedback: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Very good
+          </MDTypography>
+        ),
+        rating: <Rating name="read-only" value={5} readOnly />,
+      },
+      {
+        group: <Group image={team3} name="abc" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
@@ -107,113 +174,13 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
-        date_time: (
+        mentor: <Mentor image={team1} name="abc" email="john@creative-tim.com" />,
+        feedback: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            11/02/22__7h:45
+            Không gian đẹp, thoải mái
           </MDTypography>
         ),
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Done" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-      },
-      {
-        group: <Group image={team2} name="abc" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
-        date_time: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            11/02/22__7h:45
-          </MDTypography>
-        ),
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Done" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-      },
-      {
-        group: <Group image={team2} name="abc" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
-        date_time: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            11/02/22__7h:45
-          </MDTypography>
-        ),
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Done" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-      },
-      {
-        group: <Group image={team2} name="abc" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
-        date_time: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            11/02/22__7h:45
-          </MDTypography>
-        ),
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Done" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-      },
-      {
-        group: <Group image={team2} name="abc" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        mentor: <Mentor image={team2} name="abc" email="john@creative-tim.com" />,
-        date_time: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            11/02/22__7h:45
-          </MDTypography>
-        ),
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Done" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
+        rating: <Rating name="read-only" value={value} readOnly />,
       },
     ],
   };
