@@ -29,9 +29,9 @@ import MDTypography from "components/MDTypography";
 import DataTable from "examples/Tables/DataTable";
 
 // Data
-import data from "layouts/dashboard/components/Projects/data";
+import data from "layouts/dashboard/components/BookingToday/data";
 
-function Projects() {
+function BookingToday() {
   const { columns, rows } = data();
   const [menu, setMenu] = useState(null);
 
@@ -66,20 +66,6 @@ function Projects() {
           <MDTypography variant="h6" gutterBottom>
             Today Booking
           </MDTypography>
-          <MDBox display="flex" alignItems="center" lineHeight={0}>
-            <Icon
-              sx={{
-                fontWeight: "bold",
-                color: ({ palette: { info } }) => info.main,
-                mt: -0.5,
-              }}
-            >
-              done
-            </Icon>
-            <MDTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>1 booking</strong> this today
-            </MDTypography>
-          </MDBox>
         </MDBox>
         <MDBox color="text" px={2}>
           <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
@@ -101,4 +87,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default BookingToday;

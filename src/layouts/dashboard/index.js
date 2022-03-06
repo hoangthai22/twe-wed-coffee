@@ -28,8 +28,8 @@ import Footer from "examples/Footer";
 // Data
 
 // Dashboard components
-import Projects from "layouts/dashboard/components/Projects";
-import Feedback from "layouts/dashboard/components/OrdersOverview";
+import BookingToday from "layouts/dashboard/components/BookingToday";
+import Feedback from "layouts/dashboard/components/Feedback";
 
 function Dashboard() {
   return (
@@ -100,7 +100,7 @@ function Dashboard() {
         </Grid> */}
         <MDBox>
           <Grid item xs={12} md={6} lg={100}>
-            <Projects />
+            <BookingToday />
           </Grid>
         </MDBox>
         <MDBox mt={4.5}>

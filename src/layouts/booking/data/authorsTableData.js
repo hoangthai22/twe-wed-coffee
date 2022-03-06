@@ -115,10 +115,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Mentor", accessor: "author", width: "35%", align: "left" },
-      { Header: "Group", accessor: "function", align: "left" },
-      { Header: "Ngày giờ", accessor: "birthday", align: "center" },
-      { Header: "Số lượng", accessor: "address", align: "center" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "Session", accessor: "session", align: "left" },
+      { Header: "Mentor", accessor: "author", width: "20%", align: "left" },
+      { Header: "Thành viên", accessor: "members", width: "20%", align: "left" },
+      { Header: "Ngày giờ", accessor: "time", align: "center" },
       { Header: "Điện thoại", accessor: "phone", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
       { Header: "Thao tác", accessor: "action", align: "center" },

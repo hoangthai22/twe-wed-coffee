@@ -24,9 +24,9 @@ import DataTable from "examples/Tables/DataTable";
 
 // Material Dashboard 2 React example components
 // import TimelineItem from "examples/Timeline/TimelineItem";
-import data from "layouts/dashboard/components/OrdersOverview/data";
+import data from "layouts/dashboard/components/Feedback/data";
 
-function OrdersOverview() {
+function Feedback() {
   const { columns, rows } = data();
 
   return (
@@ -51,4 +51,4 @@ function OrdersOverview() {
   );
 }
 
-export default OrdersOverview;
+export default Feedback;
