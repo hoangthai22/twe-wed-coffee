@@ -40,6 +40,7 @@ import Dashboard from "layouts/dashboard";
 import ListBooking from "layouts/booking";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
+import History from "layouts/history";
 import Logo from "assets/images/twe.png";
 
 // @mui icons
@@ -69,6 +70,14 @@ const routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "History",
+    key: "history",
+    icon: <Icon fontSize="small">history</Icon>,
+    route: "/authentication/history",
+    component: <History />,
   },
   {
     type: "collapse",
