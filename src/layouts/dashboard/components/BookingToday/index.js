@@ -21,15 +21,17 @@ import Icon from "@mui/material/Icon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-// Material Dashboard 2 React components
+// Soft UI Dashboard React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+
+// Soft UI Dashboard Materail-UI example components
 import DataTable from "examples/Tables/DataTable";
 
 // Data
-import data from "layouts/rtl/components/Projects/data";
+import data from "layouts/dashboard/components/BookingToday/data";
 
-function Projects() {
+function BookingToday() {
   const { columns, rows } = data();
   const [menu, setMenu] = useState(null);
 
@@ -51,9 +53,9 @@ function Projects() {
       open={Boolean(menu)}
       onClose={closeMenu}
     >
-      <MenuItem onClick={closeMenu}>عمل</MenuItem>
-      <MenuItem onClick={closeMenu}>عمل آخر</MenuItem>
-      <MenuItem onClick={closeMenu}>شيء آخر هنا</MenuItem>
+      <MenuItem onClick={closeMenu}>Action</MenuItem>
+      <MenuItem onClick={closeMenu}>Another action</MenuItem>
+      <MenuItem onClick={closeMenu}>Something else</MenuItem>
     </Menu>
   );
 
@@ -62,22 +64,8 @@ function Projects() {
       <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <MDBox>
           <MDTypography variant="h6" gutterBottom>
-            المشاريع
+            Today Booking
           </MDTypography>
-          <MDBox display="flex" alignItems="center" lineHeight={0}>
-            <Icon
-              sx={{
-                fontWeight: "bold",
-                color: ({ palette: { info } }) => info.main,
-                mt: -0.5,
-              }}
-            >
-              done
-            </Icon>
-            <MDTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 انتهى</strong> هذا الشهر
-            </MDTypography>
-          </MDBox>
         </MDBox>
         <MDBox color="text" px={2}>
           <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
@@ -99,4 +87,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default BookingToday;
