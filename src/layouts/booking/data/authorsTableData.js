@@ -117,7 +117,7 @@ export default function data() {
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.price} VND
+          {item.price}.000 VND
         </MDTypography>
       ),
 
@@ -134,8 +134,8 @@ export default function data() {
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "1" : "2"}
-            color="success"
+            badgeContent={item.status ? "Request" : "2"}
+            color="white"
             variant="gradient"
             size="sm"
           />

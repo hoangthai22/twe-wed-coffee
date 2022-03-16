@@ -25,7 +25,7 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DataTable from "examples/Tables/DataTable";
 // Data
-import authorsTableData from "layouts/history/data/authorsTableData";
+import authorsTableData from "layouts/history/data";
 
 function Booking() {
   const { columns, rows } = authorsTableData();
