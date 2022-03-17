@@ -55,14 +55,13 @@ export default function data() {
   //   </MDBox>
   // );
 
-  const Mentor = ({ image, name, email }) => (
+  const Mentor = ({ image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDAvatar src={image} name={name} size="sm" />
+      <MDAvatar src={image} name={name} size="lg" />
       <MDBox ml={2} lineHeight={1}>
-        <MDTypography display="block" variant="button" fontWeight="medium">
+        <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
           {name}
         </MDTypography>
-        <MDTypography variant="caption">{email}</MDTypography>
       </MDBox>
     </MDBox>
   );
@@ -70,27 +69,55 @@ export default function data() {
   function dataTable() {
     return mentor.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {index + 1}
         </MDTypography>
       ),
       session: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           1
         </MDTypography>
       ),
       mentor: <Mentor image={item.image} name={item.fullname} />,
       members: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           Very good
         </MDTypography>
       ),
       feedback: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           Very good
         </MDTypography>
       ),
-      rating: <Rating name="read-only" value={5} readOnly />,
+      rating: <Rating name="read-only" value={5} readOnly fontSize="15px" />,
     }));
   }
   return {

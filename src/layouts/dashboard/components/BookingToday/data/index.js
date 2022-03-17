@@ -13,33 +13,19 @@ import MDBadge from "components/MDBadge";
 import Tooltip from "@mui/material/Tooltip";
 // import MDBadge from "components/MDBadge";
 
-// function getMajorString(majorList) {
-//   let majors = "";
-//   // eslint-disable-next-line array-callback-return
-//   majorList.map((major) => {
-//     // eslint-disable-next-line eqeqeq
-//     if (majors != "") {
-//       majors = `${majors}, ${major}`;
-//     } else {
-//       majors = major;
-//     }
-//   });
-
-//   return majors;
-// }
 export const Avatars = ({ image }) => (
   <Tooltip placeholder="bottom">
     <MDAvatar
       src={image}
-      size="xs"
+      size="sm"
       sx={{
         border: ({ borders: { borderWidth }, palette: { white } }) =>
-          `${borderWidth[2]} solid ${white.main}`,
+          `${borderWidth[1]} solid ${white.main}`,
         cursor: "pointer",
         position: "relative",
 
         "&:not(:first-of-type)": {
-          ml: -1.25,
+          ml: -1,
         },
 
         "&:hover, &:focus": {
@@ -55,61 +41,18 @@ export default function data() {
     axios
       .get("https://theweekendexpertise.azurewebsites.net/done?pageIndex=1&pageSize=5")
       .then((res) => {
-        // const mentors = res.data;
-        // // eslint-disable-next-line array-callback-return
-        // mentors.map((item) => {
-        //   // eslint-disable-next-line no-param-reassign
-        //   item.listMajor = getMajorString(item.listMajor);
-        //   const day = item.birthday.split(" ")[0];
-        //   // eslint-disable-next-line no-param-reassign
-        //   item.birthday = day;
-        // });
-        // setMentor(mentors);\
         console.log(res.data);
         console.log(todayBooking);
         setTodayBooking(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
-  // const avatars = (members) =>
-  //   members.map(([image, name]) => (
-  //     <Tooltip key={name} title={name} placeholder="bottom">
-  //       <MDAvatar
-  //         src={image}
-  //         alt="name"
-  //         size="xs"
-  //         sx={{
-  //           border: ({ borders: { borderWidth }, palette: { white } }) =>
-  //             `${borderWidth[2]} solid ${white.main}`,
-  //           cursor: "pointer",
-  //           position: "relative",
-
-  //           "&:not(:first-of-type)": {
-  //             ml: -1.25,
-  //           },
-
-  //           "&:hover, &:focus": {
-  //             zIndex: "10",
-  //           },
-  //         }}
-  //       />
-  //     </Tooltip>
-  //   ));
-
-  // const Group = ({ image, name }) => (
-  //   <MDBox display="flex" alignItems="center" lineHeight={1}>
-  //     <MDAvatar src={image} name={name} size="sm" />
-  //     <MDTypography variant="button" fontWeight="medium" ml={1} lineHeight={1}>
-  //       {name}
-  //     </MDTypography>
-  //   </MDBox>
-  // );
 
   const Author = ({ image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDAvatar src={image} name={name} size="sm" />
+      <MDAvatar src={image} name={name} size="lg" />
       <MDBox ml={2} lineHeight={1}>
-        <MDTypography display="block" variant="button" fontWeight="medium">
+        <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
           {name}
         </MDTypography>
       </MDBox>
@@ -119,49 +62,94 @@ export default function data() {
   function dataTable() {
     return todayBooking.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {index + 1}
         </MDTypography>
       ),
       session: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.subjectName}
         </MDTypography>
       ),
       member: (
         <MDBox display="flex" py={2}>
-          <Avatars image={item.listMemberImage} />
+          {item.listMemberImage.map((image) => (
+            <Avatars image={image} />
+          ))}
         </MDBox>
       ),
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.price}.000 VND
         </MDTypography>
       ),
 
       location: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.cafeStreet}, {item.cafeDistric}
         </MDTypography>
       ),
       date_time: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.date}
         </MDTypography>
       ),
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "Request" : "2"}
-            color="white"
+            badgeContent={item.status ? "Confirm" : "2"}
+            color="success"
             variant="gradient"
             size="sm"
+            fontSize="15px"
           />
         </MDBox>
       ),
       action: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           <MDButton color="success">Confirm</MDButton>
           <MDButton color="error">Cancel</MDButton>
         </MDTypography>
@@ -171,7 +159,6 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "session", accessor: "session", width: "15%", align: "left" },
       { Header: "mentor", accessor: "mentor", align: "center" },
       { Header: "members", accessor: "member", width: "25%", align: "left" },
       { Header: "date/time", accessor: "date_time", align: "center" },
