@@ -1,17 +1,31 @@
 /* eslint-disable react/prop-types */
-// @mui material components
-// import Tooltip from "@mui/material/Tooltip";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
 // Soft UI Dashboard React components
+// Images
+// import logoXD from "assets/images/small-logos/logo-xd.svg";
+// import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
+// import logoSlack from "assets/images/small-logos/logo-slack.svg";
+// import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
+// import logoJira from "assets/images/small-logos/logo-jira.svg";
+// import logoInvesion from "assets/images/small-logos/logo-invision.svg";
+import axios from "axios";
+import MDAvatar from "components/MDAvatar";
+import Tooltip from "@mui/material/Tooltip";
+import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDAvatar from "components/MDAvatar";
-import MDButton from "components/MDButton";
-import MDBadge from "components/MDBadge";
-import Tooltip from "@mui/material/Tooltip";
-// import MDBadge from "components/MDBadge";
+import { useEffect, useState } from "react";
+
+export const Author = ({ image, name }) => (
+  <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
+    <MDAvatar src={image} name={name} size="lg" />
+    <MDBox ml={2} lineHeight={1}>
+      <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
+        {name}
+      </MDTypography>
+    </MDBox>
+  </MDBox>
+);
 
 export const Avatars = ({ image }) => (
   <Tooltip placeholder="bottom">
@@ -35,32 +49,22 @@ export const Avatars = ({ image }) => (
     />
   </Tooltip>
 );
+
 export default function data() {
-  const [todayBooking, setTodayBooking] = useState([]);
+  const [history, setHistory] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/done?pageIndex=1&pageSize=5")
+      .get("https://theweekendexpertise.azurewebsites.net/history?pageIndex=1&pageSize=5")
       .then((res) => {
         console.log(res.data);
-        console.log(todayBooking);
-        setTodayBooking(res.data);
+        console.log(history);
+        setHistory(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const Author = ({ image, name }) => (
-    <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDAvatar src={image} name={name} size="lg" />
-      <MDBox ml={2} lineHeight={1}>
-        <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
-          {name}
-        </MDTypography>
-      </MDBox>
-    </MDBox>
-  );
-
   function dataTable() {
-    return todayBooking.map((item, index) => ({
+    return history.map((item, index) => ({
       stt: (
         <MDTypography
           component="a"
@@ -73,26 +77,12 @@ export default function data() {
           {index + 1}
         </MDTypography>
       ),
-      session: (
-        <MDTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="text"
-          fontWeight="medium"
-          fontSize="15px"
-        >
-          {item.subjectName}
-        </MDTypography>
-      ),
+      mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       member: (
         <MDBox display="flex" py={2}>
-          {item.listMemberImage.map((image) => (
-            <Avatars image={image} />
-          ))}
+          <Avatars image={item.listMemberImage} />
         </MDBox>
       ),
-      mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
         <MDTypography
           component="a"
@@ -102,7 +92,7 @@ export default function data() {
           fontWeight="medium"
           fontSize="15px"
         >
-          {item.price}.000 VND
+          {item.price} VND
         </MDTypography>
       ),
 
@@ -115,7 +105,7 @@ export default function data() {
           fontWeight="medium"
           fontSize="15px"
         >
-          {item.cafeStreet}, {item.cafeDistric}
+          {item.cafeName}
         </MDTypography>
       ),
       date_time: (
@@ -141,28 +131,16 @@ export default function data() {
           />
         </MDBox>
       ),
-      action: (
-        <MDTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="text"
-          fontWeight="medium"
-          fontSize="15px"
-        >
-          <MDButton color="success">Confirm</MDButton>
-          <MDButton color="error">Cancel</MDButton>
-        </MDTypography>
-      ),
     }));
   }
+
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "mentor", accessor: "mentor", align: "center" },
-      { Header: "members", accessor: "member", width: "25%", align: "left" },
-      { Header: "date/time", accessor: "date_time", align: "center" },
-      { Header: "status", accessor: "status", align: "center" },
+      { Header: "Mentor", accessor: "mentor", width: "20%", align: "left" },
+      { Header: "Thành viên", accessor: "member", width: "20%", align: "left" },
+      { Header: "Ngày giờ", accessor: "date_time", align: "center" },
+      { Header: "Trạng thái", accessor: "status", align: "center" },
     ],
 
     rows: dataTable(),
