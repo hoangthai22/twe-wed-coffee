@@ -38,7 +38,7 @@ import MDButton from "components/MDButton";
 // Authentication layout components
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/fptu.jpg";
 
 function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
