@@ -29,7 +29,7 @@ import Footer from "examples/Footer";
 
 // Dashboard components
 import BookingToday from "layouts/dashboard/components/BookingToday";
-import Feedback from "layouts/dashboard/components/Feedback";
+// import Feedback from "layouts/dashboard/components/Feedback";
 
 function Dashboard() {
   return (
@@ -103,11 +103,11 @@ function Dashboard() {
             <BookingToday />
           </Grid>
         </MDBox>
-        <MDBox mt={4.5}>
+        {/* <MDBox mt={4.5}>
           <Grid item xs={12} md={6} lg={100}>
             <Feedback />
           </Grid>
-        </MDBox>
+        </MDBox> */}
       </MDBox>
       <Footer />
     </DashboardLayout>

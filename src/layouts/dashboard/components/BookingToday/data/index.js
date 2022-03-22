@@ -35,6 +35,32 @@ export const Avatars = ({ image }) => (
     />
   </Tooltip>
 );
+function getSlot(slot) {
+  const SLOT = [
+    "07:00 - 08:30",
+    "08:45 - 10:15",
+    "10:30 - 12:00",
+    "12:30 - 14:00",
+    "14:15 - 15:45",
+    "16:00 - 17:30",
+  ];
+  switch (slot) {
+    case 1:
+      return SLOT[0];
+    case 2:
+      return SLOT[1];
+    case 3:
+      return SLOT[2];
+    case 4:
+      return SLOT[3];
+    case 5:
+      return SLOT[4];
+    case 6:
+      return SLOT[5];
+    default:
+  }
+  return getSlot;
+}
 export default function data() {
   const [todayBooking, setTodayBooking] = useState([]);
   useEffect(() => {
@@ -127,7 +153,7 @@ export default function data() {
           fontWeight="medium"
           fontSize="15px"
         >
-          {item.date}
+          {item.date}, {getSlot(item.slot)}
         </MDTypography>
       ),
       status: (
@@ -159,9 +185,9 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "mentor", accessor: "mentor", align: "center" },
-      { Header: "members", accessor: "member", width: "25%", align: "left" },
-      { Header: "date/time", accessor: "date_time", align: "center" },
+      { Header: "mentor", accessor: "mentor", width: "25%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "25%", align: "left" },
+      { Header: "ngày giờ", accessor: "date_time", align: "center" },
       { Header: "status", accessor: "status", align: "center" },
     ],
 

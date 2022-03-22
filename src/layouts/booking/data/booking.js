@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
-import MDButton from "components/MDButton";
+// import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
@@ -27,6 +27,32 @@ export const Author = ({ image, name }) => (
     </MDBox>
   </MDBox>
 );
+function getSlot(slot) {
+  const SLOT = [
+    "07:00 - 08:30",
+    "08:45 - 10:15",
+    "10:30 - 12:00",
+    "12:30 - 14:00",
+    "14:15 - 15:45",
+    "16:00 - 17:30",
+  ];
+  switch (slot) {
+    case 1:
+      return SLOT[0];
+    case 2:
+      return SLOT[1];
+    case 3:
+      return SLOT[2];
+    case 4:
+      return SLOT[3];
+    case 5:
+      return SLOT[4];
+    case 6:
+      return SLOT[5];
+    default:
+  }
+  return getSlot;
+}
 export const Avatars = ({ image }) => (
   <Tooltip placeholder="bottom">
     <MDAvatar
@@ -79,18 +105,6 @@ export default function data() {
           {index + 1}
         </MDTypography>
       ),
-      session: (
-        <MDTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="text"
-          fontWeight="medium"
-          fontSize="15px"
-        >
-          {item.subjectName}
-        </MDTypography>
-      ),
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       member: (
         <MDBox display="flex" py={2}>
@@ -121,7 +135,7 @@ export default function data() {
           fontWeight="medium"
           fontSize="15px"
         >
-          {item.cafeStreet}, {item.cafeDistric}
+          {item.cafeName}
         </MDTypography>
       ),
       date_time: (
@@ -133,32 +147,19 @@ export default function data() {
           fontWeight="medium"
           fontSize="15px"
         >
-          {item.date}
+          {item.date}, {getSlot(item.slot)}
         </MDTypography>
       ),
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "Request" : "2"}
-            color="white"
+            badgeContent={item.status ? "Confirm" : "2"}
+            color="success"
             variant="gradient"
-            size="sm"
-            fontSize="15px"
+            size="lg"
+            fontSizeValue="18px"
           />
         </MDBox>
-      ),
-      action: (
-        <MDTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="text"
-          fontWeight="medium"
-          fontSize="15px"
-        >
-          <MDButton color="success">Confirm</MDButton>
-          <MDButton color="error">Cancel</MDButton>
-        </MDTypography>
       ),
     }));
   }
@@ -168,9 +169,9 @@ export default function data() {
       { Header: "STT", accessor: "stt", width: "5%", align: "left" },
       { Header: "Mentor", accessor: "mentor", width: "20%", align: "left" },
       { Header: "Thành viên", accessor: "member", width: "20%", align: "left" },
+      { Header: "Địa điểm", accessor: "location", align: "center" },
       { Header: "Ngày giờ", accessor: "date_time", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
-      { Header: "Thao tác", accessor: "action", align: "center" },
     ],
 
     rows: dataTable(),

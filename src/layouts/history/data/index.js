@@ -123,8 +123,8 @@ export default function data() {
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "Confirm" : "2"}
-            color="success"
+            badgeContent={item.status ? "Cancel" : "2"}
+            color="error"
             variant="gradient"
             size="sm"
             fontSize="15px"
